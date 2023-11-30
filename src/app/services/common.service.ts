@@ -10,12 +10,7 @@ email:string
   providedIn: 'root'
 })
 export class CommonService {
-  customers :user[] =[{
-    id:'1',
-    name:'dnyaneshwar',
-    email: 'dnyaneshwar@gmail.com',
-    phoneNumber:11111111111
-  }];
+  customers :user[] =[];
   constructor() { }
   addCustomer(customer: any) {
     customer.id = crypto.randomUUID(); // Generate a unique ID using crypto
