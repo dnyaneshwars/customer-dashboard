@@ -1,0 +1,49 @@
+<div fxLayout="column" class="container" >
+    <div class="pad-10" fxLayout="row" fxLayoutAlign="start center">
+		<p fxFlex="" class="font-600 text-size-18">Details</p>
+        <!-- <button mat-button class="close-icon" [mat-dialog-close]="true"> -->
+            <mat-icon class="pointer" [mat-dialog-close]="true">close</mat-icon>
+        <!-- </button> -->
+	</div>
+    <div class="pad-10">
+        <form [formGroup]="customerForm" fxLayout="column" fxLayoutGap="10px">
+            <mat-form-field appearance="outline">
+              <mat-label>Customer Name</mat-label>
+              <input matInput formControlName="name" />
+              <mat-error *ngIf="customerForm.get('name')?.hasError('required') && customerForm.get('name')?.touched">
+                Customer name is required.
+              </mat-error>
+              <mat-error *ngIf="customerForm.get('name')?.hasError('minlength') && customerForm.get('name')?.touched">
+                Customer name must be at least 2 characters.
+              </mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+              <mat-error *ngIf="customerForm.get('email')?.hasError('required') && customerForm.get('email')?.touched">
+                Email is required.
+              </mat-error>
+              <mat-error *ngIf="customerForm.get('email')?.hasError('email') && customerForm.get('email')?.touched">
+                Enter a valid email address.
+              </mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber" />
+              <mat-error *ngIf="customerForm.get('phoneNumber')?.hasError('required') && customerForm.get('phoneNumber')?.touched">
+                Phone number is required.
+              </mat-error>
+              <mat-error *ngIf="customerForm.get('phoneNumber')?.hasError('pattern') && customerForm.get('phoneNumber')?.touched">
+                Enter a valid 10-digit phone number.
+              </mat-error>
+            </mat-form-field>
+        <div fxLayoutAlign="end center" fxLayoutGap="10px">
+            <button mat-stroked-button color="primary"  type="button" [mat-dialog-close]="true">Cancel</button>
+            <button mat-raised-button [mat-dialog-close]="true" type="button" color="primary" (click)="addCustomer()" [disabled]="!customerForm.valid">{{data.edit?'Update':'ADD'}}</button>
+        </div>
+           
+          </form>
+    </div>
+    </div>

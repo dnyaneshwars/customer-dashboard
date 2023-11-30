@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.width-100{
+    width: 100%;
+}
+.color-blue{
+    color: blue;
+}
+.pointer{
+    cursor: pointer;
+}
+.mat-mdc-dialog-container {.mdc-dialog__container {
+    max-width: 100vw !important;
+}
+}
+.font-600{
+font-weight: 600;
+} .text-size-18{
+    font-size: 18px;
+}
+.pad-10{
+    padding:10px;
+}
