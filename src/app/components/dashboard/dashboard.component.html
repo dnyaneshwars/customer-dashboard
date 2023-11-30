@@ -1,0 +1,42 @@
+
+<header>
+  <div class="logo">Management System</div>
+  <div class="actions">
+    <button (click)="logout()">Logout</button>
+  </div>
+</header>
+<div class="container">
+  <table id="customers">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+    <ng-container *ngFor="let cs of customer">
+      <tr>
+        <td>{{cs.name}}</td>
+        <td>{{cs.email}}</td>
+        <td>{{cs.phoneNumber}}</td>
+        <td>
+          <div fxLayoutGap="15px">
+            <mat-icon class="pointer" (click)="editCustomer(cs)">edit</mat-icon>
+            <mat-icon class="pointer" (click)="deleteCustomer(cs)">delete</mat-icon>
+          </div>
+
+        </td>
+      </tr>
+      <tr>
+    </ng-container>
+    <tr *ngIf="customer.length" >
+     <td colspan="4"><mat-icon class="pointer" (click)="openDialog()">add_circle_outline</mat-icon></td> 
+    </tr>
+    
+  
+  
+  </table>
+  <div *ngIf="!customer.length" class="width-100" fxLayout="column" fxLayoutAlign="center center">
+    <img src="./assets/no-data.jpg">
+   <div>Please <span class="color-blue pointer" (click)="openDialog()">Click Here</span> to add customer</div>
+   </div>
+</div>
