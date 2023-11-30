@@ -11,18 +11,23 @@ email:string
 })
 export class CommonService {
   customers :user[] =[];
-  constructor() { }
+  constructor() { 
+    const data:any= (localStorage.getItem('customer-Data'));
+    this.customers =localStorage.getItem('customer-Data')?JSON.parse(data):[]
+  }
   addCustomer(customer: any) {
     customer.id = crypto.randomUUID(); // Generate a unique ID using crypto
     this.customers.push(customer);
+    localStorage.setItem('customer-Data',JSON.stringify(this.customers));
   }
 
   updateCustomer(customer: any) {
-    console.log(customer);
+   
     const index = this.customers.findIndex((c) => c.id === customer.id);
     if (index !== -1) {
       this.customers[index] = customer;
     }
+    localStorage.setItem('customer-Data',JSON.stringify(this.customers));
   }
 
   deleteCustomer(id: string) {
@@ -30,6 +35,7 @@ export class CommonService {
     if (index !== -1) {
       this.customers.splice(index, 1);
     }
+    localStorage.setItem('customer-Data',JSON.stringify(this.customers));
   }
 
   getCustomers() {

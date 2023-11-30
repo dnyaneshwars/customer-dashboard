@@ -52,6 +52,7 @@ export class DashboardComponent {
     // Perform logout logic (clear authentication state, navigate to login, etc.)
     // For example, you can clear a token from local storage
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('customer-Data');
     this.router.navigate(['']);
   }
 }
